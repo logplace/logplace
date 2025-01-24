@@ -1,5 +1,5 @@
 {
-  "name": "loggindog",
+  "name": "logrider",
   "version": "0.0.0",
   "private": true,
   "packageManager": "pnpm@8.5.0",
@@ -9,7 +9,7 @@
     "turbo": "^2.3.3"
   },
   "scripts": {
-    "dev": "docker compose -f dev-docker-compose.yml -p dev-loggindog up --watch",
+    "dev": "docker compose -f dev-docker-compose.yml -p dev-logrider up --watch",
     "typecheck": "turbo typecheck",
     "db:studio": "pnpm -C packages/db studio",
     "db:migrate": "pnpm -C packages/db migrate"

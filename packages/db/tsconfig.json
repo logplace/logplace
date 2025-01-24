@@ -1,5 +1,5 @@
 {
-  "extends": "@loggindog/tsconfig/base.json",
+  "extends": "@logrider/tsconfig/base.json",
   "compilerOptions": {
     "baseUrl": "./src",
     "rootDir": "./src",

@@ -1,5 +1,5 @@
 {
-  "name": "@loggindog/db",
+  "name": "@logrider/db",
   "version": "0.0.0",
   "private": true,
   "license": "MIT",
@@ -15,7 +15,7 @@
     "migrate": "npx drizzle-kit migrate"
   },
   "devDependencies": {
-    "@loggindog/tsconfig": "workspace:*",
+    "@logrider/tsconfig": "workspace:*",
     "@eslint/eslintrc": "^3",
     "@types/node": "^20",
     "@types/pg": "^8.11.10",

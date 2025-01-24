@@ -1,4 +1,4 @@
-# loggindog
+# logrider
 
 ## How to run locally
 
@@ -10,7 +10,7 @@ Requirements:
 1. Clone the repo then cd into the project directory:
 
 ```
-cd loggindog
+cd logrider
 ```
 
 2. Install dependencies:
@@ -22,7 +22,7 @@ pnpm install
 3. Start the DB container:
 
 ```
-docker run --name loggindog-postgres -e POSTGRES_PASSWORD=admin -e POSTGRES_USER=loggindog -e POSTGRES_DB=loggindog -d -p 5432:5432 postgres
+docker run --name logrider-postgres -e POSTGRES_PASSWORD=admin -e POSTGRES_USER=logrider -e POSTGRES_DB=logrider -d -p 5432:5432 postgres
 ```
 
 4. Copy the sample environment file and fill it:
@@ -34,7 +34,7 @@ You will need to do this for
 
 If you didn't change any parameters in the previous step, the env var `DATABASE_URL` should be
 
-`postgres://loggindog:admin@localhost:5432/loggindog`
+`postgres://logrider:admin@localhost:5432/logrider`
 
 5. Start the web server using the following command:
 

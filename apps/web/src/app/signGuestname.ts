@@ -1,7 +1,7 @@
 "use server";
 
-import { db } from "@loggindog/db/src/index";
-import { schema } from "@loggindog/db/src/schema";
+import { db } from "@logrider/db/src/index";
+import { schema } from "@logrider/db/src/schema";
 import { revalidatePath } from "next/cache";
 
 export async function sign(name: string) {
