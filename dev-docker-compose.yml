@@ -1,0 +1,38 @@
+services:
+  db:
+    image: postgres
+    env_file: .env.docker-compose
+    volumes:
+      - capsulr-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile.dev
+    env_file: .env.docker-compose
+    ports:
+      - "3000:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /app
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: /app/apps/web/package.json
+        - action: sync+restart
+          path: ./packages/db/src/migrations
+          target: /app/packages/db/src/migrations
+
+volumes:
+  capsulr-data:

@@ -1,0 +1,10 @@
+# https://github.com/BretFisher/node-docker-good-defaults/blob/main/.dockerignore
+
+node_modules
+npm-debug.log
+.git
+*Dockerfile*
+*docker-compose*
+.next
+.env
+.env.local

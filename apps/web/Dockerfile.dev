@@ -1,0 +1,33 @@
+FROM node:18-alpine AS base
+
+# Install necessary dependencies
+RUN apk update && apk add --no-cache libc6-compat
+
+# Create a non-root user for security
+RUN adduser -D -u 1001 app
+
+# Set working directory
+WORKDIR /app
+
+# Enable pnpm before we need it
+RUN corepack enable pnpm
+
+# Copy package files first (as root)
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+
+# Copy the entire project (as root)
+COPY . .
+
+# Install dependencies as root
+RUN pnpm install --frozen-lockfile
+
+# Change ownership after installation
+RUN chown -R app:app /app
+
+# Switch to the non-root user
+USER app
+
+
+EXPOSE 3000
+
+CMD pnpm db:migrate && pnpm -C apps/web dev

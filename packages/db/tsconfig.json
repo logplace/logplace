@@ -1,0 +1,10 @@
+{
+  "extends": "@capsulr/tsconfig/base.json",
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "rootDir": "./src",
+    "outDir": "./dist"
+  },
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules", "drizzle.config.ts", "dist"]
+}
