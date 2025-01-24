@@ -1,5 +1,5 @@
 {
-  "extends": "@capsulr/tsconfig/base.json",
+  "extends": "@loggindog/tsconfig/base.json",
   "compilerOptions": {
     "baseUrl": "./src",
     "rootDir": "./src",

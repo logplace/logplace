@@ -3,7 +3,7 @@ services:
     image: postgres
     env_file: .env.docker-compose
     volumes:
-      - capsulr-data:/var/lib/postgresql/data
+      - loggindog-data:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
       interval: 5s
@@ -23,4 +23,4 @@ services:
         condition: service_healthy
 
 volumes:
-  capsulr-data:
+  loggindog-data:

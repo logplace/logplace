@@ -1,5 +1,5 @@
-import { db } from "@capsulr/db/src/index";
-import { schema } from "@capsulr/db/src/schema";
+import { db } from "@loggindog/db/src/index";
+import { schema } from "@loggindog/db/src/schema";
 import { GuestbookInput } from "./GuestbookInput";
 
 export const dynamic = "force-dynamic";
@@ -9,7 +9,7 @@ export default async function Home() {
 
   return (
     <div className="flex flex-col items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      Hi, this is Capsulr
+      Hi, this is loggindog
       <GuestbookInput />
       <div className="flex-col gap-y-4">
         {rows.map((record) => (

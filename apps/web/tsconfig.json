@@ -1,5 +1,5 @@
 {
-  "extends": "@capsulr/tsconfig/nextjs.json",
+  "extends": "@loggindog/tsconfig/nextjs.json",
   "compilerOptions": {
     "plugins": [{ "name": "next" }],
     "baseUrl": ".",

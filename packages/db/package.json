@@ -1,5 +1,5 @@
 {
-  "name": "@capsulr/db",
+  "name": "@loggindog/db",
   "version": "0.0.0",
   "private": true,
   "license": "MIT",
@@ -9,14 +9,13 @@
   "type": "module",
   "scripts": {
     "lint": "eslint .",
-    "loadEnv": "source .env",
     "typecheck": "tsc --noEmit",
-    "studio": "pnpm loadEnv && npx drizzle-kit studio",
+    "studio": "npx drizzle-kit studio",
     "generate": "npx drizzle-kit generate",
-    "migrate": "pnpm loadEnv && npx drizzle-kit migrate"
+    "migrate": "npx drizzle-kit migrate"
   },
   "devDependencies": {
-    "@capsulr/tsconfig": "workspace:*",
+    "@loggindog/tsconfig": "workspace:*",
     "@eslint/eslintrc": "^3",
     "@types/node": "^20",
     "@types/pg": "^8.11.10",
