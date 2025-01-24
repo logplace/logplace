@@ -25,21 +25,16 @@ pnpm install
 docker run --name logrider-postgres -e POSTGRES_PASSWORD=admin -e POSTGRES_USER=logrider -e POSTGRES_DB=logrider -d -p 5432:5432 postgres
 ```
 
-4. Copy the sample environment file and fill it:
+4. Copy the sample environment file:
 
-You will need to do this for
+```bash
+cp .env.docker-compose.sample .env.docker-compose
+```
 
-- `apps/web`
-- `packages/db`
-
-If you didn't change any parameters in the previous step, the env var `DATABASE_URL` should be
-
-`postgres://logrider:admin@localhost:5432/logrider`
-
-5. Start the web server using the following command:
+5. Start the app using the following command:
 
 ```
 pnpm dev
 ```
 
-This command will automatically run the db migrations and start the web server in `apps/web`.
+This command will automatically run the db migrations and start the infrastructure.
