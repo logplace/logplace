@@ -12,9 +12,7 @@ services:
       start_period: 10s
 
   web:
-    build:
-      context: .
-      dockerfile: apps/web/Dockerfile
+    image: swh00tw/logplace-web:latest
     env_file: .env.docker-compose
     ports:
       - "3000:3000"
