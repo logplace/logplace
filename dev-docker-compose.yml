@@ -3,7 +3,7 @@ services:
     image: postgres
     env_file: .env.docker-compose
     volumes:
-      - logrider-data:/var/lib/postgresql/data
+      - logplace-data:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
       interval: 5s
@@ -35,4 +35,4 @@ services:
           target: /app/packages/db/src/migrations
 
 volumes:
-  logrider-data:
+  logplace-data:

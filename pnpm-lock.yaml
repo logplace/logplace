@@ -20,7 +20,7 @@ importers:
 
   apps/web:
     dependencies:
-      '@logrider/db':
+      '@logplace/db':
         specifier: workspace:*
         version: link:../../packages/db
       '@next/env':
@@ -39,7 +39,7 @@ importers:
       '@eslint/eslintrc':
         specifier: ^3
         version: 3.2.0
-      '@logrider/tsconfig':
+      '@logplace/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
       '@types/node':
@@ -97,7 +97,7 @@ importers:
       '@eslint/eslintrc':
         specifier: ^3
         version: 3.2.0
-      '@logrider/tsconfig':
+      '@logplace/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
       '@types/node':

@@ -1,5 +1,5 @@
 {
-  "extends": "@logrider/tsconfig/nextjs.json",
+  "extends": "@logplace/tsconfig/nextjs.json",
   "compilerOptions": {
     "plugins": [{ "name": "next" }],
     "baseUrl": ".",
