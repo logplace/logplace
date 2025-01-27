@@ -9,17 +9,17 @@ export function GuestbookInput() {
         const name = `${formData.get("guestname")}`;
         sign(name);
       }}
-      className="bg-black"
+      className="flex flex-row"
     >
       <input
         type="text"
         name="guestname"
         placeholder="Enter your name..."
-        className="px-4 py-2 border rounded-lg bg-black"
+        className="flex w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-100"
       />
       <button
         type="submit"
-        className="ml-2 px-4 py-2 bg-blue-500 text-white rounded-lg"
+        className="ml-2 px-4 py-2 bg-gray-700 text-white rounded-lg"
       >
         Sign
       </button>

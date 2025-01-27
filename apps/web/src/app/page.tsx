@@ -8,15 +8,17 @@ export default async function Home() {
   const rows = await db.select().from(schema.guestbook);
 
   return (
-    <div className="flex flex-col items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      Hi, this is logplace
-      <GuestbookInput />
-      <div className="flex-col gap-y-4">
-        {rows.map((record) => (
-          <div key={record.id} className="font-bold">
-            {record.name}
-          </div>
-        ))}
+    <div className="flex flex-row justify-center text-gray-600">
+      <div className="flex flex-col justify-items-center min-h-screen p-8 sm:p-20 gap-8 lg:w-[40%]">
+        Hi, this is logplace
+        <GuestbookInput />
+        <div className="flex-col gap-y-4">
+          {rows.map((record) => (
+            <div key={record.id} className="font-medium text-gray-700">
+              {record.name}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
