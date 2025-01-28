@@ -1,5 +1,10 @@
 FROM node:18-alpine AS base
 
+# install inifisical cli
+RUN apk add --no-cache bash curl && curl -1sLf \
+'https://dl.cloudsmith.io/public/infisical/infisical-cli/setup.alpine.sh' | bash \
+&& apk add infisical
+
 # Install necessary dependencies
 RUN apk update && apk add --no-cache libc6-compat
 
@@ -21,6 +26,9 @@ COPY . .
 # Install dependencies as root
 RUN pnpm install --frozen-lockfile
 
+# Make the script executable
+RUN chmod +x ./scripts/inject_secret_and_run.sh
+
 # Change ownership after installation
 RUN chown -R app:app /app
 
@@ -30,4 +38,4 @@ USER app
 
 EXPOSE 3000
 
-CMD pnpm db:migrate && pnpm -C apps/web dev
+CMD ["./scripts/inject_secret_and_run.sh", "pnpm db:migrate && pnpm -C apps/web dev"]
