@@ -40,6 +40,11 @@ RUN corepack enable pnpm && pnpm turbo build
 FROM base AS runner
 WORKDIR /app
 
+# Install Infisical CLI
+RUN apk add --no-cache bash curl && curl -1sLf \
+'https://dl.cloudsmith.io/public/infisical/infisical-cli/setup.alpine.sh' | bash \
+&& apk add infisical
+
 # For later db migration
 RUN npm install drizzle-kit drizzle-orm pg
 
@@ -57,6 +62,15 @@ COPY --from=installer --chown=nextjs:nodejs /app/apps/web/public ./apps/web/publ
 # Copy the migrations related files
 COPY --from=installer --chown=nextjs:nodejs /app/db/src/ ./src/
 COPY --from=installer --chown=nextjs:nodejs /app/db/scripts ./scripts/
-COPY --from=installer --chown=nextjs:nodejs /app/db/drizzle.config.ts .
+COPY --from=installer --chown=nextjs:nodejs /app/db/drizzle.config.ts ./drizzle.config.ts
 
-CMD sh scripts/migrations.sh && node apps/web/server.js
+# Copy the startup script and place it at work dir
+COPY --from=builder --chown=nextjs:nodejs /app/scripts/inject_secret_and_run.sh ./scripts/
+
+# Make the scripts executable and set correct ownership
+RUN chmod +x ./scripts/inject_secret_and_run.sh
+RUN chmod +x ./scripts/migrations.sh
+RUN chown nextjs:nodejs ./scripts/inject_secret_and_run.sh
+RUN chown nextjs:nodejs ./scripts/migrations.sh
+
+CMD ["/bin/sh", "./scripts/inject_secret_and_run.sh", "./scripts/migrations.sh && node apps/web/server.js"]

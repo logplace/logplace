@@ -1,6 +1,5 @@
 #!/bin/sh
 
-# Function to check if an environment variable is set
 check_env_var() {
     if [ -z "${!1}" ]; then
         echo "Error: $1 is not set"
