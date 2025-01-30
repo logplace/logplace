@@ -10,6 +10,7 @@
   },
   "scripts": {
     "dev": "docker compose -f dev-docker-compose.yml -p dev-logplace up --watch",
+    "start": "docker compose -f prod-docker-compose.yml -p prod-logplace up",
     "typecheck": "turbo typecheck",
     "db:studio": "pnpm -C packages/db studio",
     "db:migrate": "pnpm -C packages/db migrate",
