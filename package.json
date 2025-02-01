@@ -13,7 +13,6 @@
     "start": "docker compose -f prod-docker-compose.yml -p prod-logplace up",
     "typecheck": "turbo typecheck",
     "db:studio": "pnpm -C packages/db studio",
-    "db:migrate": "pnpm -C packages/db migrate",
-    "web:image-pub": "docker image build . -f apps/web/Dockerfile -t swh00tw/logplace-web:latest --push"
+    "db:migrate": "pnpm -C packages/db migrate"
   }
 }
