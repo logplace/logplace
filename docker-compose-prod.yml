@@ -1,0 +1,4 @@
+services:
+  web:
+    build: !reset null
+    image: ghcr.io/logplace/logplace-web:latest

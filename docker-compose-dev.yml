@@ -1,0 +1,17 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile.dev
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /app
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: /app/apps/web/package.json
+        - action: sync+restart
+          path: ./packages/db/src/migrations
+          target: /app/packages/db/src/migrations
