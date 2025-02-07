@@ -3,6 +3,7 @@ services:
     build: !reset null
     image: ghcr.io/logplace/logplace-web:latest
     ports: !reset []
+    scale: 3
     labels:
       - "traefik.http.services.web.loadbalancer.server.port=3000"
       - "traefik.http.routers.web.rule=Host(`logplace.xyz`)"
