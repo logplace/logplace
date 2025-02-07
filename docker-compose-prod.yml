@@ -3,6 +3,8 @@ services:
     build: !reset null
     image: ghcr.io/logplace/logplace-web:latest
     ports: !reset []
+    labels:
+      - "traefik.http.routers.web.rule=Host(`logplace.xyz`)"
 
   reverse-proxy:
     image: traefik:v3.1
