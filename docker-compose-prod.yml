@@ -4,6 +4,7 @@ services:
     image: ghcr.io/logplace/logplace-web:latest
     ports: !reset []
     labels:
+      - "traefik.http.services.web.loadbalancer.server.port=3000"
       - "traefik.http.routers.web.rule=Host(`logplace.xyz`)"
 
   reverse-proxy:
