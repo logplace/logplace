@@ -19,4 +19,4 @@ jobs:
           script: |
             cd logplace
             git pull
-            sh /scripts/prod-up.sh
+            sh ./scripts/prod-up.sh
