@@ -10,10 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: SSH into VPS
-        uses: fifsky/ssh-action@master
+        uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.VPS_HOST }}
-          user: ${{ secrets.VPS_USERNAME }}
+          username: ${{ secrets.VPS_USERNAME }}
           key: ${{ secrets.VPS_SSH_PRIVATE_KEY }}
-          command: |
+          port: ${{ secrets.VPS_PORT }}
+          script: |
+            cd /logplace
+            git pull
             whoami
