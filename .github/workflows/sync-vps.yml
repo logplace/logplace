@@ -19,5 +19,4 @@ jobs:
           script: |
             cd logplace
             git pull
-            ls
-            whoami
+            sh /scripts/prod-up.sh
