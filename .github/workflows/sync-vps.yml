@@ -17,6 +17,5 @@ jobs:
           key: ${{ secrets.VPS_SSH_PRIVATE_KEY }}
           port: ${{ secrets.VPS_PORT }}
           script: |
-            cd /logplace
-            git pull
+            ls
             whoami
