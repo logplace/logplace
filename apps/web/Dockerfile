@@ -9,6 +9,8 @@ RUN apk update
 RUN apk add --no-cache libc6-compat
 # Set working directory
 WORKDIR /app
+# Fixes: https://github.com/nodejs/corepack/issues/612#issuecomment-2630469508
+RUN npm i -g corepack@latest
 RUN corepack enable pnpm && pnpm install turbo
 COPY . .
 RUN pnpm turbo prune web --docker
@@ -21,6 +23,8 @@ WORKDIR /app
 
 # First install the dependencies (as they change less often)
 COPY --from=builder /app/out/json/ .
+# Fixes: https://github.com/nodejs/corepack/issues/612#issuecomment-2630469508
+RUN npm i -g corepack@latest
 RUN corepack enable pnpm && pnpm i --frozen-lockfile
 
 # Copy the database migration files
@@ -35,6 +39,8 @@ COPY --from=builder /app/out/full/ .
 # ARG TURBO_TOKEN
 # ENV TURBO_TOKEN=$TURBO_TOKEN
 
+# Fixes: https://github.com/nodejs/corepack/issues/612#issuecomment-2630469508
+RUN npm i -g corepack@latest
 RUN corepack enable pnpm && pnpm turbo build
 
 FROM base AS runner
