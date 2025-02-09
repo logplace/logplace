@@ -47,6 +47,7 @@ services:
       - "--rolling-restart"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - /home/ghaction/.docker/config.json:/config.json
 
 volumes:
   letsencrypt:
