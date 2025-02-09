@@ -1,7 +1,7 @@
 services:
   web:
     build: !reset null
-    image: ghcr.io/logplace/logplace-web:latest
+    image: ghcr.io/logplace/logplace-web:main
     ports: !reset []
     deploy:
       mode: replicated
