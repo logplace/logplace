@@ -10,7 +10,7 @@ export default async function Home() {
   return (
     <div className="flex flex-row justify-center text-gray-600">
       <div className="flex flex-col justify-items-center min-h-screen p-8 sm:p-20 gap-8 lg:w-[40%]">
-        Hi, this is logplace
+        Hi, this is a guestbook.
         <GuestbookInput />
         <div className="flex-col gap-y-4">
           {rows.map((record) => (
