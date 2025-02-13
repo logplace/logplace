@@ -10,3 +10,5 @@ export const db = drizzle({
   casing: "snake_case",
   schema,
 });
+
+export const dbSchema = schema;

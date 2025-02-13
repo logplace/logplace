@@ -15,6 +15,8 @@ RUN adduser -D -u 1001 app
 WORKDIR /app
 
 # Enable pnpm before we need it
+# Fixes: https://github.com/nodejs/corepack/issues/612#issuecomment-2630469508
+RUN npm i -g corepack@latest
 RUN corepack enable pnpm
 
 # Copy package files first (as root)
@@ -38,4 +40,4 @@ USER app
 
 EXPOSE 3000
 
-CMD ["./scripts/inject_secret_and_run.sh", "pnpm db:migrate && pnpm -C apps/web dev"]
+CMD ["/bin/sh", "./scripts/inject_secret_and_run.sh", "pnpm db:migrate && pnpm -C apps/web dev"]
