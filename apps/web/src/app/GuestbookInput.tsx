@@ -1,13 +1,16 @@
 "use client";
+import { trpc } from "@/app/_trpc/client";
 
-import { sign } from "./signGuestname";
+export function GuestbookInput(props: { onSettled?: () => void }) {
+  const { onSettled } = props;
+  const sign = trpc.signName.useMutation();
 
-export function GuestbookInput() {
   return (
     <form
-      action={(formData) => {
+      action={async (formData) => {
         const name = `${formData.get("guestname")}`;
-        sign(name);
+        await sign.mutateAsync({ name });
+        onSettled?.();
       }}
       className="flex flex-row"
     >

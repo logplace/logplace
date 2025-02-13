@@ -16,9 +16,6 @@ importers:
 
   apps/web:
     dependencies:
-      '@logplace/db':
-        specifier: workspace:*
-        version: link:../../packages/db
       '@logplace/trpc':
         specifier: workspace:*
         version: link:../../packages/trpc
