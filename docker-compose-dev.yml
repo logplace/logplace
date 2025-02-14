@@ -3,6 +3,9 @@ services:
     build:
       context: .
       dockerfile: apps/web/Dockerfile.dev
+    environment:
+      # build time args for nextjs app (local)
+      - NEXT_PUBLIC_BASE_URL=http://localhost:3000
     develop:
       watch:
         - action: sync

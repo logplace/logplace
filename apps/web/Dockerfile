@@ -39,6 +39,10 @@ COPY --from=builder /app/out/full/ .
 # ARG TURBO_TOKEN
 # ENV TURBO_TOKEN=$TURBO_TOKEN
 
+# Build args for Next.js App
+ARG NEXT_PUBLIC_BASE_URL
+ENV NEXT_PUBLIC_BASE_URL=$NEXT_PUBLIC_BASE_URL
+
 # ref: https://github.com/nodejs/corepack/issues/612#issuecomment-2631462297
 ENV COREPACK_INTEGRITY_KEYS=0
 RUN corepack enable pnpm && pnpm turbo build
@@ -48,8 +52,8 @@ WORKDIR /app
 
 # Install Infisical CLI
 RUN apk add --no-cache bash curl && curl -1sLf \
-'https://dl.cloudsmith.io/public/infisical/infisical-cli/setup.alpine.sh' | bash \
-&& apk add infisical
+    'https://dl.cloudsmith.io/public/infisical/infisical-cli/setup.alpine.sh' | bash \
+    && apk add infisical
 
 # For later db migration
 RUN npm install drizzle-kit drizzle-orm pg
