@@ -15,8 +15,8 @@ RUN adduser -D -u 1001 app
 WORKDIR /app
 
 # Enable pnpm before we need it
-# Fixes: https://github.com/nodejs/corepack/issues/612#issuecomment-2630469508
-RUN npm i -g corepack@latest
+# ref: https://github.com/nodejs/corepack/issues/612#issuecomment-2631462297
+ENV COREPACK_INTEGRITY_KEYS=0
 RUN corepack enable pnpm
 
 # Copy package files first (as root)
