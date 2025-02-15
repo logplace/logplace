@@ -3,13 +3,14 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { httpBatchLink } from "@trpc/client";
 import React, { useState } from "react";
+import { clientEnv } from "@/clientEnv";
 
 import { trpc } from "./client";
 
 const IS_SERVER = typeof window === "undefined";
 function getURL(path: string) {
   const baseURL = IS_SERVER
-    ? process.env.NEXT_PUBLIC_BASE_URL
+    ? clientEnv.NEXT_PUBLIC_BASE_URL
     : window.location.origin;
   return new URL(path, baseURL).toString();
 }
