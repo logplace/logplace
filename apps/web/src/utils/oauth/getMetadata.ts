@@ -1,9 +1,9 @@
-import { serverEnv } from "@/serverEnv";
+import { clientEnv } from "@/clientEnv";
 
 // spec: https://atproto.com/specs/oauth#clients
 export const getMetadata = () => {
-  const isDev = serverEnv.NEXT_PUBLIC_BASE_URL.startsWith("http://localhost");
-  const baseUrl = serverEnv.NEXT_PUBLIC_BASE_URL;
+  const isDev = clientEnv.NEXT_PUBLIC_BASE_URL.startsWith("http://localhost");
+  const baseUrl = clientEnv.NEXT_PUBLIC_BASE_URL;
   const enc = encodeURIComponent;
   return {
     client_id: isDev
