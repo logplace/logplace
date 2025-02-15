@@ -11,6 +11,18 @@ services:
       retries: 5
       start_period: 10s
 
+  redis:
+    image: redis/redis-stack-server:latest
+    command: redis-server --save 60 1000 --appendonly yes --requirepass $${REDIS_PASSWORD}
+    env_file: .env.docker-compose
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "$${REDIS_PASSWORD}", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
   web:
     build:
       context: .
@@ -21,6 +33,9 @@ services:
     depends_on:
       db:
         condition: service_healthy
+      redis:
+        condition: service_healthy
 
 volumes:
   logplace-data:
+  redis-data:
