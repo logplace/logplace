@@ -1,8 +1,11 @@
-import { createClient } from "redis";
-import { serverEnv } from "@/serverEnv";
+import { createClient, RedisClientType } from "redis";
 
-const redisClient = createClient({
-  url: serverEnv.REDIS_URL,
+if (!process.env.REDIS_URL) {
+  throw new Error("Missing REDIS_URL");
+}
+
+const redisClient: RedisClientType = createClient({
+  url: process.env.REDIS_URL,
   socket: {
     reconnectStrategy: (retries) => {
       // Maximum retry delay is 3s
@@ -14,6 +17,7 @@ const redisClient = createClient({
     },
   },
 });
+export type RedisClient = typeof redisClient;
 
 redisClient.on("error", (error) => {
   console.error("Redis Client Error:", error);

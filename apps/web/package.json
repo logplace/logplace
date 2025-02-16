@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@logplace/trpc": "workspace:*",
+    "@logplace/atproto": "workspace:*",
     "@next/env": "^15.1.3",
     "@tanstack/react-query": "5.66.0",
     "@trpc/client": "11.0.0-rc.764",
@@ -22,7 +23,6 @@
     "next": "15.1.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "redis": "^4.7.0",
     "superjson": "^2.2.2",
     "zod": "^3.24.2"
   },

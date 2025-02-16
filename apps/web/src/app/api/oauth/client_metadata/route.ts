@@ -1,4 +1,4 @@
-import { getMetadata } from "@/utils/oauth/getMetadata";
+import { getMetadata } from "@logplace/atproto";
 
 export async function GET() {
   const metadata = getMetadata();

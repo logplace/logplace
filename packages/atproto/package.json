@@ -1,0 +1,30 @@
+{
+  "name": "@logplace/atproto",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    ".": {
+      "import": "./src/index.ts"
+    }
+  },
+  "type": "module",
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@logplace/tsconfig": "workspace:*",
+    "@types/node": "^20",
+    "eslint-config-custom": "workspace:*",
+    "tsx": "^4.19.2"
+  },
+  "dependencies": {
+    "@atproto/oauth-client-node": "^0.2.11",
+    "redis": "^4.7.0"
+  }
+}

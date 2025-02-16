@@ -1,9 +1,11 @@
-import { clientEnv } from "@/clientEnv";
+import { NodeOAuthClientOptions } from "@atproto/oauth-client-node";
 
 // spec: https://atproto.com/specs/oauth#clients
-export const getMetadata = () => {
-  const isDev = clientEnv.NEXT_PUBLIC_BASE_URL.startsWith("http://localhost");
-  const baseUrl = clientEnv.NEXT_PUBLIC_BASE_URL;
+export const getMetadata = (baseUrl = process.env.NEXT_PUBLIC_BASE_URL) => {
+  if (!baseUrl) {
+    throw new Error("Missing NEXT_PUBLIC_BASE_URL");
+  }
+  const isDev = baseUrl.startsWith("http://localhost");
   const enc = encodeURIComponent;
   return {
     client_id: isDev
@@ -18,5 +20,5 @@ export const getMetadata = () => {
     dpop_bound_access_tokens: true,
     // optional
     client_name: "Logplace Web App",
-  };
+  } as NodeOAuthClientOptions["clientMetadata"];
 };
