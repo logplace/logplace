@@ -12,9 +12,12 @@ services:
       start_period: 10s
 
   redis:
-    image: redis/redis-stack-server:latest
-    command: redis-server --save 60 1000 --appendonly yes --requirepass $${REDIS_PASSWORD}
+    image: redis:latest
     env_file: .env.docker-compose
+    command: >
+      sh -c '
+      redis-server --save 60 1000 --appendonly yes --requirepass "$${REDIS_PASSWORD}" --protected-mode no --bind 0.0.0.0
+      '
     volumes:
       - redis-data:/data
     healthcheck:
