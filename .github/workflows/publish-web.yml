@@ -57,4 +57,6 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            NEXT_PUBLIC_BASE_URL=${{ secrets.NEXT_PUBLIC_BASE_URL }}
+            INFISICAL_MACHINE_CLIENT_ID=${{ secrets.INFISICAL_MACHINE_CLIENT_ID }}
+            INFISICAL_MACHINE_CLIENT_SECRET=${{ secrets.INFISICAL_MACHINE_CLIENT_SECRET }}
+            PROJECT_ID=${{ secrets.INFISICAL_PROJECT_ID }}
