@@ -1,24 +1,23 @@
 import { initTRPC } from "@trpc/server";
 import { db, dbSchema } from "@logplace/db";
-import type { CreateNextContextOptions } from "@trpc/server/adapters/next";
 import { AtprotoOAuthClient, createClient } from "@logplace/atproto";
 
-export type Context = {
-  db: typeof db;
-  dbSchema: typeof dbSchema;
-  oauthClient: AtprotoOAuthClient;
-};
-
-export const createContext = async (
-  opts?: CreateNextContextOptions
-): Promise<Context> => {
-  const oauthClient = await createClient();
+export const createContext = async () => {
+  let oauthClient: AtprotoOAuthClient;
+  try {
+    oauthClient = await createClient();
+  } catch (e) {
+    console.error(e);
+    throw new Error("Failed to create OAuth client");
+  }
   return {
     db,
     dbSchema,
     oauthClient,
   };
 };
+
+export type Context = Awaited<ReturnType<typeof createContext>>;
 
 const trpc = initTRPC.context<Context>().create();
 export const {

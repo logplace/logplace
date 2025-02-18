@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@atproto/oauth-client-node": "^0.2.11",
+    "@atproto/syntax": "^0.3.3",
     "redis": "^4.7.0"
   }
 }
