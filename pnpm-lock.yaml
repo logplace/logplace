@@ -190,6 +190,9 @@ importers:
 
   packages/trpc:
     dependencies:
+      '@logplace/atproto':
+        specifier: workspace:*
+        version: link:../atproto
       '@logplace/db':
         specifier: workspace:*
         version: link:../db

@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@logplace/db": "workspace:*",
+    "@logplace/atproto": "workspace:*",
     "@trpc/server": "11.0.0-rc.764",
     "zod": "^3.24.2"
   }

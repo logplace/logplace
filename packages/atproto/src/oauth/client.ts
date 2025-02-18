@@ -12,3 +12,4 @@ export const createClient = async () => {
     sessionStore: new SessionStore(redisClient),
   });
 };
+export type AtprotoOAuthClient = InstanceType<typeof NodeOAuthClient>;
