@@ -4,7 +4,7 @@ import { getRedisClient } from "../redisClient/client";
 import { getMetadata } from "./getMetadata";
 
 export const createClient = async () => {
-  const redisClient = getRedisClient();
+  const redisClient = await getRedisClient();
 
   return new NodeOAuthClient({
     clientMetadata: getMetadata(),
