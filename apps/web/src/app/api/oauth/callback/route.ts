@@ -9,5 +9,5 @@ export async function GET(req: NextRequest) {
   const clientSession = await getUserSession();
   clientSession.did = did;
   await clientSession.save();
-  redirect(`/?did=${did}`);
+  redirect(`/`);
 }

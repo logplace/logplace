@@ -1,29 +1,27 @@
-"use client";
-import { GuestbookInput } from "./GuestbookInput";
-import { trpc } from "@/app/_trpc/client";
+import { isSessionValid, getUserSession } from "@/utils/auth";
+import { LogoutButton } from "./LogoutButton";
+import { LoginInput } from "./LoginInput";
 
-export default function Home() {
-  const { data, isFetching, refetch } = trpc.getGuestRecords.useQuery();
+export default async function Home() {
+  const isAuth = await isSessionValid();
+  const session = await getUserSession();
+
+  if (!isAuth) {
+    return (
+      <div className="flex flex-row justify-center text-gray-600">
+        <div className="flex flex-col justify-center text-gray-600 lg:w-[40%] p-8 gap-y-2">
+          Not logged in
+          <LoginInput />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-row justify-center text-gray-600">
-      <div className="flex flex-col justify-items-center min-h-screen p-8 sm:p-20 gap-8 lg:w-[40%]">
-        Hi, this is a guestbook.
-        <GuestbookInput
-          onSettled={() => {
-            refetch();
-          }}
-        />
-        {isFetching || !data ? (
-          <div>Loading...</div>
-        ) : (
-          <div className="flex-col gap-y-4">
-            {data.guests.map((record) => (
-              <div key={record.id} className="font-medium text-gray-700">
-                {record.name}
-              </div>
-            ))}
-          </div>
-        )}
+      <div className="flex flex-row items-center p-8 sm:p-20 gap-8 lg:w-[40%]">
+        {`What's up! ${session.did}`}
+        <LogoutButton />
       </div>
     </div>
   );
