@@ -1,7 +1,8 @@
 import { router, publicProcedure } from "../trpc";
 import { z } from "zod";
-import { isValidHandle, OAuthResolverError } from "@logplace/atproto";
+import { isValidHandle, OAuthResolverError, Agent } from "@logplace/atproto";
 import { TRPCError } from "@trpc/server";
+import { authedProcedure } from "./middlewares";
 
 export const oauthRouter = router({
   login: publicProcedure
@@ -48,6 +49,30 @@ export const oauthRouter = router({
       const params = new URLSearchParams(paramString);
       const { session } = await oauthClient.callback(params);
       const did = session.did;
+
+      // testing
+      try {
+        const ses = await oauthClient.restore(did);
+        const agent = new Agent(ses);
+        const foo = await agent.getProfile({
+          actor: did,
+        });
+        console.log("AGENT INIT SUCCESSFULLY: ", foo);
+      } catch (e) {
+        console.log("ERROR INIT AGENT", e);
+      }
       return did;
     }),
+  logout: authedProcedure.mutation(async (opts) => {
+    const { atpSession } = opts.ctx;
+    await atpSession.signOut();
+  }),
+  getAtpProfile: authedProcedure.query(async (opts) => {
+    const { atpAgent, did } = opts.ctx;
+    const profile = await atpAgent.getProfile({
+      actor: did,
+    });
+    console.log("PROFILE: ", profile);
+    return profile;
+  }),
 });
