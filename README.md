@@ -19,7 +19,7 @@ cd logplace
 cp .env.docker-compose.sample .env.docker-compose
 ```
 
-5. Start the stack using the following command:
+3. Start the stack using the following command:
 
 ```
 pnpm dev
