@@ -1,10 +1,12 @@
-import { isSessionValid, getUserSession } from "@/utils/auth";
+import { isSessionValid } from "@/utils/auth";
 import { LogoutButton } from "./LogoutButton";
 import { LoginInput } from "./LoginInput";
+import { serverClient } from "@/app/_trpc/serverClient";
 
 export default async function Home() {
   const isAuth = await isSessionValid();
-  const session = await getUserSession();
+  const profile = await serverClient.getAtpProfile();
+  console.log(profile);
 
   if (!isAuth) {
     return (
@@ -20,7 +22,7 @@ export default async function Home() {
   return (
     <div className="flex flex-row justify-center text-gray-600">
       <div className="flex flex-row items-center p-8 sm:p-20 gap-8 lg:w-[40%]">
-        {`What's up! ${session.did}`}
+        {`What's up! ${profile.displayName}(${profile.handle})`}
         <LogoutButton />
       </div>
     </div>

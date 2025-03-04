@@ -73,6 +73,6 @@ export const oauthRouter = router({
       actor: did,
     });
     console.log("PROFILE: ", profile);
-    return profile;
+    return profile.data;
   }),
 });
