@@ -13,7 +13,7 @@ export const getMetadata = (baseUrl = process.env.NEXT_PUBLIC_BASE_URL) => {
   return {
     client_id: isDev
       ? `http://localhost?redirect_uri=${enc(`${origin}/api/oauth/callback`)}&scope=${enc("atproto transition:generic")}`
-      : `${origin}/api/oauth/client_metadata`,
+      : `${origin}/api/oauth/client-metadata.json`,
     application_type: "web",
     grant_types: ["authorization_code", "refresh_token"],
     scope: "atproto transition:generic",
