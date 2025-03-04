@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 
 export function LogoutButton() {
   const router = useRouter();
+
   return (
     <button
       onClick={async () => {
