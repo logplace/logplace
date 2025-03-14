@@ -1,5 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
+import { Button, TextField } from "@radix-ui/themes";
 
 export function LoginInput(props: { onSettled?: () => void }) {
   const { onSettled } = props;
@@ -12,20 +13,17 @@ export function LoginInput(props: { onSettled?: () => void }) {
         router.push("/api/oauth/login?handle=" + handle);
         onSettled?.();
       }}
-      className="flex flex-row"
+      className="flex flex-row items-center"
     >
-      <input
+      <TextField.Root
         type="text"
         name="handle"
         placeholder="Enter your bluesky handle..."
-        className="flex px-4 py-2 border border-gray-300 rounded-lg bg-gray-100 w-full"
+        className="flex-grow"
       />
-      <button
-        type="submit"
-        className="ml-2 px-4 py-2 bg-gray-700 text-white rounded-lg flex min-w-fit"
-      >
-        Sign In
-      </button>
+      <Button type="submit" className="my-2 ml-2 text-gray-2 flex min-w-fit">
+        Sign in
+      </Button>
     </form>
   );
 }

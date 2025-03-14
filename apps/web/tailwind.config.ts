@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { radixThemePreset } from "radix-themes-tw";
 
 const config: Config = {
   content: [
@@ -10,9 +11,12 @@ const config: Config = {
     extend: {
       colors: {
         offwhite: "#f2f0ef",
+        white: "#ffffff",
+        black: "#000000",
       },
     },
   },
+  presets: [radixThemePreset],
   plugins: [],
 };
 export default config;

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Provider as TrpcProvider } from "./_trpc/Provider";
+import { Theme } from "@radix-ui/themes";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,9 +27,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-offwhite text-black`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased text-gray-11`}
       >
-        <TrpcProvider>{children}</TrpcProvider>
+        <Theme accentColor="iris" grayColor="slate">
+          <TrpcProvider>{children}</TrpcProvider>
+        </Theme>
       </body>
     </html>
   );
