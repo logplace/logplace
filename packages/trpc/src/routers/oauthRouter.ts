@@ -49,18 +49,6 @@ export const oauthRouter = router({
       const params = new URLSearchParams(paramString);
       const { session } = await oauthClient.callback(params);
       const did = session.did;
-
-      // testing
-      try {
-        const ses = await oauthClient.restore(did);
-        const agent = new Agent(ses);
-        const foo = await agent.getProfile({
-          actor: did,
-        });
-        console.log("AGENT INIT SUCCESSFULLY: ", foo);
-      } catch (e) {
-        console.log("ERROR INIT AGENT", e);
-      }
       return did;
     }),
   logout: authedProcedure.mutation(async (opts) => {
@@ -72,7 +60,6 @@ export const oauthRouter = router({
     const profile = await atpAgent.getProfile({
       actor: did,
     });
-    console.log("PROFILE: ", profile);
     return profile.data;
   }),
 });
