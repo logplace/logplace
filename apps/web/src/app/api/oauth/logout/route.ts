@@ -6,5 +6,5 @@ export async function GET() {
   await serverClient.logout();
   const clientSession = await getUserSession();
   clientSession.destroy();
-  redirect("/");
+  redirect("/login");
 }

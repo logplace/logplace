@@ -1,7 +1,7 @@
 import { isSessionValid } from "@/utils/auth";
 import { LogoutButton } from "./LogoutButton";
-import { LoginInput } from "./LoginInput";
 import { serverClient } from "@/app/_trpc/serverClient";
+import { redirect } from "next/navigation";
 
 const getAtpProfile = async () => {
   const isAuth = await isSessionValid();
@@ -16,14 +16,7 @@ export default async function Home() {
   const profile = await getAtpProfile();
 
   if (!isAuth) {
-    return (
-      <div className="flex flex-row justify-center">
-        <div className="flex flex-col justify-center lg:w-[30%] p-8 gap-y-2">
-          Not logged in
-          <LoginInput />
-        </div>
-      </div>
-    );
+    redirect("/login");
   }
 
   return (
