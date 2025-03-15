@@ -1,6 +1,6 @@
 import { router, publicProcedure } from "../trpc";
 import { z } from "zod";
-import { isValidHandle, OAuthResolverError, Agent } from "@logplace/atproto";
+import { isValidHandle, OAuthResolverError } from "@logplace/atproto";
 import { TRPCError } from "@trpc/server";
 import { authedProcedure } from "./middlewares";
 
