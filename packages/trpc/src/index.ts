@@ -7,3 +7,4 @@ export type AppRouter = typeof appRouter;
 
 export * from "./trpc";
 export * from "./models";
+export * from "./constant";
