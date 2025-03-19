@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Provider as TrpcProvider } from "./_trpc/Provider";
 import { Theme } from "@radix-ui/themes";
+import { Toaster } from "./Toaster";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,6 +30,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased text-gray-11`}
       >
+        <Toaster />
         <Theme accentColor="iris" grayColor="slate">
           <TrpcProvider>{children}</TrpcProvider>
         </Theme>
