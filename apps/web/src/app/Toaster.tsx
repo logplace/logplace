@@ -8,24 +8,11 @@ import {
   ReadonlyURLSearchParams,
 } from "next/navigation";
 import { useEffect } from "react";
-
-const TOAST_SEARCH_PARAM = "toast";
-const TOAST_TYPE_SEARCH_PARAM = "toast_type";
-
-// must be value in: https://github.com/emilkowalski/sonner/blob/main/src/state.ts
-type ToastType = "success" | "info" | "warning" | "error";
-
-export function encodeToastSearchParams(
-  message: string,
-  toastType: ToastType | undefined
-): string {
-  const enc = encodeURIComponent;
-  let res = `${TOAST_SEARCH_PARAM}=${enc(message)}`;
-  if (toastType) {
-    res += `&${TOAST_TYPE_SEARCH_PARAM}=${enc(toastType)}`;
-  }
-  return res;
-}
+import {
+  TOAST_SEARCH_PARAM,
+  TOAST_TYPE_SEARCH_PARAM,
+  ToastType,
+} from "@/utils/toast";
 
 export function Toaster() {
   const searchParams = useSearchParams();
