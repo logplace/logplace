@@ -15,6 +15,13 @@
       "when": 1742580208077,
       "tag": "0001_add-log-and-label",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1742581125164,
+      "tag": "0002_delete-guestbook-schema",
+      "breakpoints": true
     }
   ]
 }
