@@ -17,6 +17,7 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
+    "@atproto/lex-cli": "^0.7.1",
     "@eslint/eslintrc": "^3",
     "@logplace/tsconfig": "workspace:*",
     "@types/node": "^20",
@@ -25,8 +26,10 @@
   },
   "dependencies": {
     "@atproto/api": "^0.14.7",
+    "@atproto/lexicon": "^0.4.9",
     "@atproto/oauth-client-node": "^0.2.11",
     "@atproto/syntax": "^0.3.3",
+    "@atproto/xrpc-server": "^0.7.13",
     "redis": "^4.7.0"
   }
 }
