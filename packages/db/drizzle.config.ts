@@ -7,6 +7,7 @@ const config: Config = defineConfig({
   dbCredentials: {
     url: process.env.DATABASE_URL!,
   },
+  casing: "snake_case",
 });
 
 export default config;
