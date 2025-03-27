@@ -17,7 +17,7 @@ export function Headerbar() {
   return (
     <div className="w-full flex h-[64px] absolute top-0 items-center justify-center border-b-[1px] border-gray-3 px-4 md:px-0">
       <div className="w-full md:w-[50%] lg:w-[40%] h-full flex flex-row justify-between items-center p-4">
-        <Text weight="medium" size="3">
+        <Text weight="medium" size="3" className="text-gray-11">
           Logplace
         </Text>
         {isFetching || !profile ? (
