@@ -12,7 +12,8 @@ export function LogoutButton() {
         await fetch("/api/oauth/logout");
         router.refresh();
       }}
-      className="ml-2 px-4 py-2 rounded-2 min-w-fit flex"
+      className="rounded-2"
+      color="red"
     >
       Log out
     </Button>

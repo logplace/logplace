@@ -1,4 +1,3 @@
-import { LogoutButton } from "./LogoutButton";
 import { serverClient } from "@/app/_trpc/serverClient";
 import { withAuthRequired } from "@/utils/withAuthRequired";
 
@@ -8,7 +7,6 @@ async function Home() {
   return (
     <div className="flex flex-row w-full gap-8">
       {`What's up! ${profile.displayName}(${profile.handle})`}
-      <LogoutButton />
     </div>
   );
 }

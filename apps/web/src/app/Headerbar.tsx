@@ -1,7 +1,8 @@
 "use client";
-import { Avatar, Text } from "@radix-ui/themes";
+import { Avatar, Text, Spinner, Popover } from "@radix-ui/themes";
 import { usePathname } from "next/navigation";
 import { trpc } from "@/app/_trpc/client";
+import { LogoutButton } from "./LogoutButton";
 
 const excludedPaths: string[] = ["/login"];
 
@@ -9,7 +10,6 @@ export function Headerbar() {
   const pathname = usePathname();
   const { data: profile, isFetching } = trpc.getAtpProfile.useQuery();
 
-  console.log(profile);
   if (excludedPaths.includes(pathname)) {
     return null;
   }
@@ -20,13 +20,25 @@ export function Headerbar() {
         <Text weight="medium" size="3">
           Logplace
         </Text>
-        {isFetching || !profile ? null : (
-          <Avatar
-            radius="full"
-            alt="avatar"
-            src={profile.avatar}
-            fallback={profile.displayName || profile.handle}
-          />
+        {isFetching || !profile ? (
+          <Spinner />
+        ) : (
+          <Popover.Root>
+            <Popover.Trigger>
+              <Avatar
+                radius="full"
+                alt="avatar"
+                src={profile.avatar}
+                fallback={profile.displayName || profile.handle}
+                className="cursor-pointer"
+              />
+            </Popover.Trigger>
+            <Popover.Content align="center">
+              <div className="flex flex-col gap-y-2">
+                <LogoutButton />
+              </div>
+            </Popover.Content>
+          </Popover.Root>
         )}
       </div>
     </div>
