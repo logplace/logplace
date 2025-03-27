@@ -39,25 +39,23 @@ const info: {
 
 export default async function LoginPage() {
   return (
-    <div className="flex flex-row justify-center items-center min-h-screen">
-      <div className="flex flex-col justify-center lg:w-[30%] p-8 gap-y-2">
-        <Text size="4" weight={"medium"}>
-          Hi, welcome to Logplace.
-        </Text>
-        <LoginInput />
-        <div className="flex flex-col gap-y-2 mt-4">
-          {info.map((data, idx) => {
-            const { title, desc } = data;
-            return (
-              <div className="flex flex-col text-gray-9 gap-y-1" key={idx}>
-                <Text size="2" className="text-gray-11">
-                  {title}
-                </Text>
-                {typeof desc === "string" ? <Text size="2">{desc}</Text> : desc}
-              </div>
-            );
-          })}
-        </div>
+    <div className="flex flex-col justify-center w-full p-12 gap-y-2">
+      <Text size="4" weight={"medium"}>
+        Hi, welcome to Logplace.
+      </Text>
+      <LoginInput />
+      <div className="flex flex-col gap-y-2 mt-4">
+        {info.map((data, idx) => {
+          const { title, desc } = data;
+          return (
+            <div className="flex flex-col text-gray-9 gap-y-1" key={idx}>
+              <Text size="2" className="text-gray-11">
+                {title}
+              </Text>
+              {typeof desc === "string" ? <Text size="2">{desc}</Text> : desc}
+            </div>
+          );
+        })}
       </div>
     </div>
   );

@@ -6,11 +6,9 @@ async function Home() {
   const profile = await serverClient.getAtpProfile();
 
   return (
-    <div className="flex flex-row justify-center">
-      <div className="flex flex-row items-center p-8 sm:p-20 gap-8 lg:w-[40%]">
-        {`What's up! ${profile.displayName}(${profile.handle})`}
-        <LogoutButton />
-      </div>
+    <div className="flex flex-row w-full gap-8">
+      {`What's up! ${profile.displayName}(${profile.handle})`}
+      <LogoutButton />
     </div>
   );
 }

@@ -4,6 +4,7 @@ import "./globals.css";
 import { Provider as TrpcProvider } from "./_trpc/Provider";
 import { Theme } from "@radix-ui/themes";
 import { Toaster } from "./Toaster";
+import { Headerbar } from "./Headerbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,7 +33,14 @@ export default function RootLayout({
       >
         <Toaster />
         <Theme accentColor="iris" grayColor="slate">
-          <TrpcProvider>{children}</TrpcProvider>
+          <TrpcProvider>
+            <div className="relative flex flex-row min-h-screen justify-center">
+              <Headerbar />
+              <div className="flex flex-row justify-center pt-[64px] w-full md:w-[50%] lg:w-[40%] min-h-screen border-[1px] border-gray-3">
+                <div className="w-full p-4">{children}</div>
+              </div>
+            </div>
+          </TrpcProvider>
         </Theme>
       </body>
     </html>
