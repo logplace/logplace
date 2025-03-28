@@ -1,5 +1,5 @@
 import { initTRPC } from "@trpc/server";
-import { db, dbSchema } from "@logplace/db";
+import { db, dbTables } from "@logplace/db";
 import { AtprotoOAuthClient, createClient } from "@logplace/atproto";
 
 export const createContext = async ({ did }: { did?: string }) => {
@@ -13,7 +13,7 @@ export const createContext = async ({ did }: { did?: string }) => {
 
   return {
     db,
-    dbSchema,
+    dbTables,
     oauthClient,
     did,
   };
