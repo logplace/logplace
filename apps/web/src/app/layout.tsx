@@ -5,6 +5,7 @@ import { Provider as TrpcProvider } from "./_trpc/Provider";
 import { Theme } from "@radix-ui/themes";
 import { Toaster } from "./Toaster";
 import { Headerbar } from "./Headerbar";
+import { Suspense } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,7 +32,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Toaster />
+        <Suspense>
+          <Toaster />
+        </Suspense>
         <Theme accentColor="iris" grayColor="slate">
           <TrpcProvider>
             <div className="relative flex flex-row min-h-screen justify-center text-gray-10">
