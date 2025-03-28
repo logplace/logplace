@@ -5,29 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1735364971019,
-      "tag": "0000_add-guest-book",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1742580208077,
-      "tag": "0001_add-log-and-label",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1742581125164,
-      "tag": "0002_delete-guestbook-schema",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "7",
-      "when": 1743130784990,
-      "tag": "0003_change_label_id_to_uuid",
+      "when": 1743132837615,
+      "tag": "0000_init_log_label",
       "breakpoints": true
     }
   ]

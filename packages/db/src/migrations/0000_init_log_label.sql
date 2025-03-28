@@ -1,5 +1,5 @@
 CREATE TABLE "label" (
-	"id" integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY (sequence name "label_id_seq" INCREMENT BY 1 MINVALUE 1 MAXVALUE 2147483647 START WITH 1 CACHE 1),
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"name" varchar(32) NOT NULL,
 	"created_by" varchar NOT NULL,
 	"created_at" timestamp with time zone DEFAULT now() NOT NULL,
@@ -19,7 +19,7 @@ CREATE TABLE "log" (
 CREATE TABLE "log_label_record" (
 	"id" integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY (sequence name "log_label_record_id_seq" INCREMENT BY 1 MINVALUE 1 MAXVALUE 2147483647 START WITH 1 CACHE 1),
 	"log_id" varchar,
-	"label_id" integer
+	"label_id" uuid
 );
 --> statement-breakpoint
 ALTER TABLE "label" ADD CONSTRAINT "label_created_by_log_id_fk" FOREIGN KEY ("created_by") REFERENCES "public"."log"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
