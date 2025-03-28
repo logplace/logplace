@@ -6,6 +6,7 @@ import { cn } from "@/utils/cn";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { LabelCombobox } from "./LabelComboBox";
 
 const logCreationFormSchema = z.object({
   title: z.string().min(1).max(64),
@@ -39,7 +40,9 @@ function LabelInputFields(props: {
           "border-r-[1px]"
         )}
       >
-        {label}
+        <Text size="2" className="mt-2">
+          {label}
+        </Text>
       </div>
       <div
         {...inputProps}
@@ -89,7 +92,9 @@ export function LogCreateDialog() {
               placeholder="I did sth! (64 chars max)"
             />
           </LabelInputFields>
-          <LabelInputFields label={"Labels"} />
+          <LabelInputFields label={"Labels"}>
+            <LabelCombobox />
+          </LabelInputFields>
           <textarea
             className="col-span-3 py-2 px-4 w-full bg-transparent focus:ring-0 focus:border-0 focus:outline-none resize-none text-gray-11"
             placeholder="detailed descriptions?"
