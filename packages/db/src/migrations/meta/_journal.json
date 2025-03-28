@@ -22,6 +22,13 @@
       "when": 1742581125164,
       "tag": "0002_delete-guestbook-schema",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1743130784990,
+      "tag": "0003_change_label_id_to_uuid",
+      "breakpoints": true
     }
   ]
 }

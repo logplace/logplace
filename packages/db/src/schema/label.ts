@@ -2,7 +2,7 @@ import * as t from "drizzle-orm/pg-core";
 import { log } from "./log";
 
 export const label = t.pgTable("label", {
-  id: t.integer().primaryKey().generatedAlwaysAsIdentity(),
+  id: t.uuid().defaultRandom().primaryKey(),
   name: t.varchar({ length: 32 }).notNull(),
   createdBy: t
     .varchar()

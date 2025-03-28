@@ -12,3 +12,5 @@ export const db = drizzle({
 });
 
 export const dbSchema = schema;
+export const dbTables = schema;
+export * as drizzleOrm from "drizzle-orm";
